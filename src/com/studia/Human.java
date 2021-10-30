@@ -2,10 +2,20 @@ package com.studia;
 
 import com.studia.devices.Car;
 
-public class Human {
+public class Human extends Animal{
+
+    public final static String HUMAN_SPECIES = "homo sapiens";
+
+    String firstName;
+    String lastName;
     Animal animal;
     private Car car;
     Double salary;
+
+    Human(String firstName) {
+        super(HUMAN_SPECIES);
+        this.firstName = firstName;
+    }
 
     public void getSalary() {
         System.out.println();

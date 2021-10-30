@@ -1,13 +1,12 @@
 package com.studia.devices;
 
-public class Car {
-    final String model;
-    final String producer;
+public class Car extends Device{
     Double weight;
     Integer doors;
     Double value;
 
-    public Car(String model, String producer) {
+    public Car(String model, String producer, Integer yearOfProduction) {
+        super(yearOfProduction);
         this.model = model;
         this.producer = producer;
     }
