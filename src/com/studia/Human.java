@@ -5,7 +5,6 @@ import com.studia.devices.Car;
 public class Human extends Animal{
 
     public final static String HUMAN_SPECIES = "homo sapiens";
-
     String firstName;
     String lastName;
     Animal animal;

@@ -6,9 +6,7 @@ public class Car extends Device{
     Double value;
 
     public Car(String model, String producer, Integer yearOfProduction) {
-        super(yearOfProduction);
-        this.model = model;
-        this.producer = producer;
+        super(yearOfProduction, producer, model);
     }
 
     public Double getWeight() {
@@ -76,6 +74,6 @@ public class Car extends Device{
     }
 
     public void turnOn(){
-        System.out.println("Brum Brum ");
+        System.out.println("Przekrecam kluczyk");
     }
 }

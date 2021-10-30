@@ -2,6 +2,7 @@ package com.studia;
 
 
 import com.studia.devices.Car;
+import com.studia.devices.Device;
 import com.studia.devices.Phone;
 
 public class Main {
