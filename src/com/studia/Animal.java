@@ -1,6 +1,6 @@
 package com.studia;
 
-public class Animal {
+public class Animal implements Saleable{
     private static final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
     private static final Double DEFAULT_DOG_WEIGHT = 12.0;
     private static final Double DEFAULT_CAT_WEIGHT = 2.3;
@@ -39,5 +39,15 @@ public class Animal {
 
     Double getWeight() {
         return weight;
+    }
+
+    @Override
+    public void sale() {
+        System.out.println("Sprzedaj");
+    }
+
+    @Override
+    public void getPrice() {
+
     }
 }

@@ -1,6 +1,8 @@
 package com.studia.devices;
 
-public class Phone extends Device {
+import com.studia.Saleable;
+
+public class Phone extends Device implements Saleable {
     final Double screenSize;
     String os;
 
@@ -12,5 +14,15 @@ public class Phone extends Device {
     @Override
     public void turnOn() {
         System.out.println("Klikam guzik wlaczajacy telefon");
+    }
+
+    @Override
+    public void sale() {
+        
+    }
+
+    @Override
+    public void getPrice() {
+
     }
 }
