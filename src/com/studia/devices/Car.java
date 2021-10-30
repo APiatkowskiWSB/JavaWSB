@@ -4,6 +4,14 @@ public class Car {
     final String model;
     final String producer;
     Double weight;
+    Integer doors;
+    Double value;
+
+    public Car(String model, String producer) {
+        this.model = model;
+        this.producer = producer;
+    }
+
 
     public Double getWeight() {
         return weight;
@@ -37,14 +45,6 @@ public class Car {
         this.value = value;
     }
 
-    Integer doors;
-    Double value;
-
-    public Car(String model, String producer) {
-        this.model = model;
-        this.producer = producer;
-    }
-
     public int hashCode() {
         double result = 31 * 7 * model.hashCode() *
                 producer.hashCode() *
@@ -65,9 +65,6 @@ public class Car {
                 doors == car.doors &&
                 car.value == car.value;
     }
-    public void turnOn(){
-        System.out.println("Brum Brum ");
-    }
 
     @Override
     public String toString() {
@@ -78,5 +75,9 @@ public class Car {
                 ", doors=" + doors +
                 ", value=" + value +
                 '}';
+    }
+
+    public void turnOn(){
+        System.out.println("Brum Brum ");
     }
 }

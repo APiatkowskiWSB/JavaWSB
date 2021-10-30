@@ -5,17 +5,6 @@ public class Animal {
     private static final Double DEFAULT_DOG_WEIGHT = 12.0;
     private static final Double DEFAULT_CAT_WEIGHT = 2.3;
 
-    @Override
-    public String toString() {
-        return "Animal{" +
-                "species='" + species + '\'' +
-                ", name='" + name + '\'' +
-                ", weight=" + weight +
-                ", age=" + age +
-                ", alive=" + alive +
-                '}';
-    }
-
     final String species;
     String name;
     private Double weight;
