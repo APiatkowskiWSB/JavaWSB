@@ -41,7 +41,6 @@ public class Main {
         Animal cat = new Animal("felis");
         dog.name = "Gwiazdka";
 
-
         Human human = new Human();
         human.animal = cat;
 

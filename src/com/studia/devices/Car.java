@@ -12,7 +12,6 @@ public class Car {
         this.producer = producer;
     }
 
-
     public Double getWeight() {
         return weight;
     }
