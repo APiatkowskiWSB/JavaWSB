@@ -32,5 +32,6 @@ public class Main {
         indyk.setWeight(5.0);
         indyk.feed(1.5);
         indyk.feed();
+        indyk.beEaten();
     }
 }
