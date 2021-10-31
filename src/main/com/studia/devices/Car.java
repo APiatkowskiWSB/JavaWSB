@@ -1,7 +1,6 @@
 package main.com.studia.devices;
 
-import main.com.studia.Human;
-import main.com.studia.Saleable;
+import main.com.studia.creatures.Human;
 
 public class Car extends Device implements Saleable {
     Double weight;

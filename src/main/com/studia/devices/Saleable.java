@@ -1,4 +1,6 @@
-package main.com.studia;
+package main.com.studia.devices;
+
+import main.com.studia.creatures.Human;
 
 public interface Saleable {
     void sale();

@@ -1,8 +1,10 @@
-package main.com.studia;
+package main.com.studia.creatures;
+
+import main.com.studia.devices.Saleable;
 
 import java.util.Objects;
 
-public class Animal implements Saleable{
+public abstract class Animal implements Saleable ,Feedable {
     private static final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
     private static final Double DEFAULT_DOG_WEIGHT = 12.0;
     private static final Double DEFAULT_CAT_WEIGHT = 2.3;
@@ -13,7 +15,7 @@ public class Animal implements Saleable{
     Integer age;
     Boolean alive;
 
-    Animal(String species) {
+    public Animal(String species) {
         this.species = species; //wartosc z parametru
         this.alive = true; //wartosc domyslna
         if (this.species == "canis") {
@@ -25,16 +27,18 @@ public class Animal implements Saleable{
         }
     }
 
+
+
     public void setWeight(Double weight) {
         this.weight = weight;
     }
 
-    void feed() {
+    public void feed() {
         weight++;
         System.out.println("Moja waga to: " + weight);
     }
 
-    void feed(Double foodWeight) {
+    public void feed(Double foodWeight) {
         weight += foodWeight;
         System.out.println("Moja waga to: " + weight);
     }

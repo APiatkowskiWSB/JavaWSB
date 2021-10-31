@@ -1,7 +1,6 @@
 package main.com.studia.devices;
 
-import main.com.studia.Human;
-import main.com.studia.Saleable;
+import main.com.studia.creatures.Human;
 
 public class Phone extends Device implements Saleable {
     final Double screenSize;

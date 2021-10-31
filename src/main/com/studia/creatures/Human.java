@@ -1,9 +1,9 @@
-package main.com.studia;
+package main.com.studia.creatures;
 
 import main.com.studia.devices.Car;
 import main.com.studia.devices.Phone;
 
-public class Human extends Animal{
+public class Human extends Animal {
 
     public final static String HUMAN_SPECIES = "homo sapiens";
     public String firstName;
@@ -14,7 +14,7 @@ public class Human extends Animal{
     public Double cash;
     public Phone phone;
 
-    Human(String firstName) {
+    public Human(String firstName) {
         super(HUMAN_SPECIES);
         this.firstName = firstName;
         this.cash = 0.0;
