@@ -1,4 +1,4 @@
-package com.studia.devices;
+package main.com.studia.devices;
 
 public abstract class Device {
     final Integer yearOfPRoduction;

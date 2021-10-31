@@ -1,23 +1,27 @@
-package com.studia;
+package main.com.studia;
 
-import com.studia.devices.Car;
+import main.com.studia.devices.Car;
+import main.com.studia.devices.Phone;
 
 public class Human extends Animal{
 
     public final static String HUMAN_SPECIES = "homo sapiens";
-    String firstName;
+    public String firstName;
     String lastName;
     Animal animal;
-    private Car car;
+    public Car car;
     Double salary;
+    public Double cash;
+    public Phone phone;
 
     Human(String firstName) {
         super(HUMAN_SPECIES);
         this.firstName = firstName;
+        this.cash = 0.0;
     }
 
     public void getSalary() {
-        System.out.println();
+        System.out.println(salary);
     }
 
     public void setSalary(Double salary) {
@@ -54,5 +58,10 @@ public class Human extends Animal{
                 ", car=" + car +
                 ", salary=" + salary +
                 '}';
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        System.out.println("Nie mozna kupowac ludzi");
     }
 }

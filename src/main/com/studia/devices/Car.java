@@ -1,6 +1,9 @@
-package com.studia.devices;
+package main.com.studia.devices;
 
-public class Car extends Device{
+import main.com.studia.Human;
+import main.com.studia.Saleable;
+
+public class Car extends Device implements Saleable {
     Double weight;
     Integer doors;
     Double value;
@@ -9,36 +12,8 @@ public class Car extends Device{
         super(yearOfProduction, producer, model);
     }
 
-    public Double getWeight() {
-        return weight;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public String getProducer() {
-        return producer;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
-    public Integer getDoors() {
-        return doors;
-    }
-
-    public void setDoors(Integer doors) {
-        this.doors = doors;
-    }
-
     public Double getValue() {
         return value;
-    }
-
-    public void setValue(Double value) {
-        this.value = value;
     }
 
     public int hashCode() {
@@ -75,5 +50,36 @@ public class Car extends Device{
 
     public void turnOn(){
         System.out.println("Przekrecam kluczyk");
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if(this.equals(seller.car)) {
+            System.out.println("Sprzedajacy posiada ten samochod do sprzedania");
+            if(buyer.cash >= price) {
+                System.out.println("Kupujacy ma wystarczajaco gotówki");
+                buyer.cash -= price;
+                seller.cash += price;
+                seller.car = null;
+                System.out.println(seller.firstName + " sprzedal telefon " + this.producer + " " + this.model);
+                buyer.car = this;
+                System.out.println(buyer.firstName + " kupil telefon " + this.producer + " " + this.model);
+                System.out.println("Transakcja zakonczona");
+            }else{
+                System.out.println("Kupujacy nie ma wystarczaco gotówki, transakcja niemożliwa");
+            }
+        }else {
+            System.out.println("Sprzedajacy nie posiada tego samochodu");
+        }
+    }
+
+    @Override
+    public void sale() {
+
+    }
+
+    @Override
+    public void getPrice() {
+
     }
 }
