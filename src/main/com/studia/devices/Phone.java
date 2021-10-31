@@ -2,9 +2,16 @@ package main.com.studia.devices;
 
 import main.com.studia.creatures.Human;
 
+import java.net.URL;
+import java.util.List;
+
 public class Phone extends Device implements Saleable {
     final Double screenSize;
     String os;
+    final static String DEFAULT_SERVER_ADDRESS = "85.128.128.104";
+    final static String DEFAULT_PROTOCOL = "HTTP";
+    final static String DEFAULT_VERSION = "10.2.13";
+    final static String DEFAULT_APPLICATION = "INTELLIJ";
 
     public Phone(String producer, String model, Double screenSize, Integer yearOfProduction) {
         super(yearOfProduction, producer, model);
@@ -56,5 +63,27 @@ public class Phone extends Device implements Saleable {
                 ", screenSize=" + screenSize +
                 ", os='" + os + '\'' +
                 '}';
+    }
+
+    void installAnApp(String nazwaAplikacji) {
+        installAnApp(nazwaAplikacji, DEFAULT_VERSION);
+    }
+
+    void installAnApp(String nazwaAplikacji, String wersjaAplikacji) {
+        installAnApp(nazwaAplikacji,wersjaAplikacji,DEFAULT_SERVER_ADDRESS);
+    }
+
+    void installAnApp(String nazwaAplikacji, String wersjaAplikacji, String adresServera) {
+        System.out.println("zainstalowano na telefonie aplikacje " + nazwaAplikacji + " w wersji " +wersjaAplikacji +
+                " na serverze " + adresServera);
+    }
+
+    void installAnApp(List<String> applicationsToInstall) {
+        for (String application: applicationsToInstall) {
+            installAnApp(application);
+        }
+    }
+    void installAnApp(URL url) {
+        installAnApp(DEFAULT_APPLICATION);
     }
 }

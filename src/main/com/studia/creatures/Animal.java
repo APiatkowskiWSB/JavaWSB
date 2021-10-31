@@ -1,7 +1,6 @@
 package main.com.studia.creatures;
 
 import main.com.studia.devices.Saleable;
-
 import java.util.Objects;
 
 public abstract class Animal implements Saleable ,Feedable {
