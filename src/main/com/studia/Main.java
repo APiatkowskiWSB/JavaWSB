@@ -29,7 +29,11 @@ public class Main {
 
         Human human = new Human("Jan Kowalski");
         Car dieselCar = new Diesel("A4", "Audi", 2018);
-        human.car = dieselCar;
+        dieselCar.value = 2000.0;
+        human.checkIfHumanCanBuyCar(dieselCar);
+        human.setSalary(5000.0);
+        System.out.println();
+        human.checkIfHumanCanBuyCar(dieselCar);
 
         human.setSalary(2000.0);
         System.out.println();

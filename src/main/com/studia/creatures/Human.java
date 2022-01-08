@@ -15,8 +15,8 @@ public class Human extends Animal {
     public String firstName;
     String lastName;
     Animal animal;
-    public Car car;
-    Double salary;
+    private Car car;
+    double salary;
     public Double cash;
     public Phone phone;
     private Map<LocalDateTime, Double> getSalaryHistory = new HashMap<>();
@@ -51,6 +51,10 @@ public class Human extends Animal {
 
     public Car getCar() {
         return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public void checkIfHumanCanBuyCar(Car car){

@@ -5,7 +5,7 @@ import main.com.studia.creatures.Human;
 public abstract class Car extends Device implements Saleable {
     Double weight;
     Integer doors;
-    Double value;
+    public Double value;
 
     public Car(String model, String producer, Integer yearOfProduction) {
         super(yearOfProduction, producer, model);
@@ -55,16 +55,16 @@ public abstract class Car extends Device implements Saleable {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
-        if(this.equals(seller.car)) {
+        if(this.equals(seller.getCar())) {
             System.out.println("Sprzedajacy posiada ten samochod do sprzedania");
             if(buyer.cash >= price) {
                 System.out.println("Kupujacy ma wystarczajaco gotówki");
                 buyer.cash -= price;
                 seller.cash += price;
-                seller.car = null;
-                System.out.println(seller.firstName + " sprzedal telefon " + this.producer + " " + this.model);
-                buyer.car = this;
-                System.out.println(buyer.firstName + " kupil telefon " + this.producer + " " + this.model);
+                seller.setCar(null);
+                System.out.println(seller.firstName + " sprzedal samochod " + this.producer + " " + this.model);
+                buyer.setCar(this);
+                System.out.println(buyer.firstName + " kupil samochod " + this.producer + " " + this.model);
                 System.out.println("Transakcja zakonczona");
             }else{
                 System.out.println("Kupujacy nie ma wystarczaco gotówki, transakcja niemożliwa");
