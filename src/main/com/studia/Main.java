@@ -55,5 +55,11 @@ public class Main {
         iphone.installAnApp("RunApp");
         iphone.installAnApp("RunApp","12.3");
         iphone.installAnApp("RunApp","11.1.23","runApp.com");
+
+        Human buyer = new Human("buyer");
+        Human seller = new Human("seller");
+        human.sell(seller, buyer, 2000.0);
+        dieselCar.sell(human,seller,0.0);
+        dog.sell(human,buyer,1000.0);
     }
 }
