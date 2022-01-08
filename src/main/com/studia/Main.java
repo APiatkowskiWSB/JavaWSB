@@ -45,11 +45,15 @@ public class Main {
 
         System.out.println();
 
-        Phone phone = new Phone("Iphone", "12",6.1,2021);
+        Phone iphone = new Phone("Iphone", "12",6.1,2021);
+        iphone.toString();
+        System.out.println();
+        iphone.turnOn();
+        dieselCar.turnOn();
         URL url = new URL("HTTP","appstore.com",8080,"/runApp");
-        phone.installAnApp(url);
-        phone.installAnApp("RunApp");
-        phone.installAnApp("RunApp","12.3");
-        phone.installAnApp("RunApp","11.1.23","runApp.com");
+        iphone.installAnApp(url);
+        iphone.installAnApp("RunApp");
+        iphone.installAnApp("RunApp","12.3");
+        iphone.installAnApp("RunApp","11.1.23","runApp.com");
     }
 }
