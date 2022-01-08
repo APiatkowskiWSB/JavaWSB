@@ -25,6 +25,10 @@ public class Main {
         dog.takeForAWalk();
         dog.feed();
 
+        Human human = new Human("Jan Kowalski");
+        Car dieselCar = new Diesel("A4", "Audi", 2018);
+        human.car = dieselCar;
+
         Phone phone = new Phone("Iphone", "12",6.1,2021);
         URL url = new URL("HTTP","appstore.com",8080,"/runApp");
         phone.installAnApp(url);
