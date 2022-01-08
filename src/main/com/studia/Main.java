@@ -61,5 +61,11 @@ public class Main {
         human.sell(seller, buyer, 2000.0);
         dieselCar.sell(human,seller,0.0);
         dog.sell(human,buyer,1000.0);
+
+        Animal cat = new Pet("cat");
+        cat.feed();
+        FarmAnimal chicken = new FarmAnimal("chicken");
+        chicken.feed();
+        chicken.beEaten();
     }
 }
