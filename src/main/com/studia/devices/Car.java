@@ -6,6 +6,7 @@ public abstract class Car extends Device implements Saleable {
     Double weight;
     Integer doors;
     public Double value;
+    String typeOfEngine;
 
     public Car(String model, String producer, Integer yearOfProduction) {
         super(yearOfProduction, producer, model);

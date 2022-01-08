@@ -5,6 +5,7 @@ public class Electric extends Car{
     static final String ELECTRIC = "ELECTRIC";
     public Electric(String model, String producer, Integer yearOfProduction) {
         super(model, producer, yearOfProduction);
+        this.typeOfEngine = "ELECTRIC";
     }
 
     @Override

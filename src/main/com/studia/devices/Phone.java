@@ -8,10 +8,10 @@ import java.util.List;
 public class Phone extends Device implements Saleable {
     final Double screenSize;
     String os;
-    final static String DEFAULT_SERVER_ADDRESS = "85.128.128.104";
-    final static String DEFAULT_PROTOCOL = "HTTP";
-    final static String DEFAULT_VERSION = "10.2.13";
-    final static String DEFAULT_APPLICATION = "INTELLIJ";
+    public final static String DEFAULT_SERVER_ADDRESS = "85.128.128.104";
+    public final static String DEFAULT_PROTOCOL = "HTTP";
+    public final static String DEFAULT_VERSION = "10.2.13";
+    public final static String DEFAULT_APPLICATION = "INTELLIJ";
 
     public Phone(String producer, String model, Double screenSize, Integer yearOfProduction) {
         super(yearOfProduction, producer, model);
@@ -84,6 +84,7 @@ public class Phone extends Device implements Saleable {
         }
     }
     public void installAnApp(URL url) {
-        System.out.println(url.toString());
+        System.out.println("twoj url to: " + url);
+        System.out.println("Zainstalowana aplikacja to " + DEFAULT_APPLICATION + " w wersji " + DEFAULT_VERSION);
     }
 }

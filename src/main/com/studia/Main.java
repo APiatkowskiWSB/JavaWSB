@@ -7,6 +7,7 @@ import main.com.studia.creatures.Human;
 import main.com.studia.creatures.Pet;
 import main.com.studia.devices.Car;
 import main.com.studia.devices.Diesel;
+import main.com.studia.devices.Electric;
 import main.com.studia.devices.Phone;
 
 import java.net.MalformedURLException;
@@ -50,7 +51,7 @@ public class Main {
         System.out.println();
         iphone.turnOn();
         dieselCar.turnOn();
-        URL url = new URL("HTTP","appstore.com",8080,"/runApp");
+        URL url = new URL(Phone.DEFAULT_PROTOCOL,Phone.DEFAULT_SERVER_ADDRESS,8080,"/" + Phone.DEFAULT_APPLICATION + "v" + Phone.DEFAULT_VERSION);
         iphone.installAnApp(url);
         iphone.installAnApp("RunApp");
         iphone.installAnApp("RunApp","12.3");
@@ -67,5 +68,9 @@ public class Main {
         FarmAnimal chicken = new FarmAnimal("chicken");
         chicken.feed();
         chicken.beEaten();
+
+        dieselCar.refuel();
+        Car electric = new Electric("Micra", "Nissan", 2015);
+        electric.refuel();
     }
 }
