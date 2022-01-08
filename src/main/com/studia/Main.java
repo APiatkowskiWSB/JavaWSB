@@ -16,6 +16,15 @@ public class Main {
 
     public static void main(String[] args) throws MalformedURLException {
 
+        Animal dog = new Pet("dog");
+        dog.feed();
+        dog.takeForAWalk();
+        dog.feed(0.5);
+        dog.takeForAWalk();
+        dog.takeForAWalk();
+        dog.takeForAWalk();
+        dog.feed();
+
         Phone phone = new Phone("Iphone", "12",6.1,2021);
         URL url = new URL("HTTP","appstore.com",8080,"/runApp");
         phone.installAnApp(url);

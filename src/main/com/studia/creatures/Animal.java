@@ -56,6 +56,10 @@ public abstract class Animal implements Saleable ,Feedable {
     }
 
     public void feed(Double foodWeight) {
+        if (weight <= 0) {
+            System.out.println("Nie zyje wiec nie bede jadl");
+            return;
+        }
         weight += foodWeight;
         System.out.println("Moja waga to: " + weight);
     }
