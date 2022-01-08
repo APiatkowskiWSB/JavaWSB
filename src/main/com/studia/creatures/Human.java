@@ -1,7 +1,13 @@
 package main.com.studia.creatures;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import main.com.studia.devices.Car;
 import main.com.studia.devices.Phone;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Human extends Animal {
 
@@ -13,6 +19,7 @@ public class Human extends Animal {
     Double salary;
     public Double cash;
     public Phone phone;
+    private Map<LocalDateTime, Double> getSalaryHistory = new HashMap<>();
 
     public Human(String firstName) {
         super(HUMAN_SPECIES);
@@ -21,7 +28,14 @@ public class Human extends Animal {
     }
 
     public void getSalary() {
-        System.out.println(salary);
+        if(getSalaryHistory.size() == 0) {
+            System.out.println("Dane o wypłacie nidy nie były pobierane");
+        } else {
+            getSalaryHistory.entrySet().stream()
+                    .forEach(x -> System.out.println("Dane byly pobierane dnia " + x.getKey() + " a wyplata wtedy wynosila " + x.getValue()));
+        }
+        System.out.println("Aktualna wypłata wynosi: " + salary);
+        getSalaryHistory.put(LocalDateTime.now(), salary);
     }
 
     public void setSalary(Double salary) {

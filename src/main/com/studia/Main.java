@@ -25,9 +25,21 @@ public class Main {
         dog.takeForAWalk();
         dog.feed();
 
+        System.out.println();
+
         Human human = new Human("Jan Kowalski");
         Car dieselCar = new Diesel("A4", "Audi", 2018);
         human.car = dieselCar;
+
+        human.setSalary(2000.0);
+        System.out.println();
+        human.getSalary();
+        System.out.println();
+        human.setSalary(3500.0);
+        System.out.println();
+        human.getSalary();
+
+        System.out.println();
 
         Phone phone = new Phone("Iphone", "12",6.1,2021);
         URL url = new URL("HTTP","appstore.com",8080,"/runApp");
