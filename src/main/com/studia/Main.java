@@ -1,37 +1,26 @@
 package main.com.studia;
 
 
+import main.com.studia.creatures.Animal;
 import main.com.studia.creatures.FarmAnimal;
 import main.com.studia.creatures.Human;
+import main.com.studia.creatures.Pet;
 import main.com.studia.devices.Car;
+import main.com.studia.devices.Diesel;
 import main.com.studia.devices.Phone;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Human kazik = new Human("Kazik");
-        Human zenek = new Human("Zenek");
-        Phone phone = new Phone("Samsung", "S20", 5.5,2020);
-        zenek.phone = phone;
+    public static void main(String[] args) throws MalformedURLException {
 
-        kazik.cash = 2000.0;
-
-        phone.sell(zenek, kazik, 2100.0);
-
-        Car car = new Car("Audi", "S5", 2020);
-        zenek.car = car;
-        kazik.cash = 5000.0;
-        car.sell(zenek,kazik,5000.0);
-        kazik.cash = 2000.0;
-
-        zenek.sell(zenek,kazik,5000.0);
-
-        Human siostra = new Human("Justyna");
-
-        FarmAnimal indyk = new FarmAnimal("indyk");
-        indyk.setWeight(5.0);
-        indyk.feed(1.5);
-        indyk.feed();
-        indyk.beEaten();
+        Phone phone = new Phone("Iphone", "12",6.1,2021);
+        URL url = new URL("HTTP","appstore.com",8080,"/runApp");
+        phone.installAnApp(url);
+        phone.installAnApp("RunApp");
+        phone.installAnApp("RunApp","12.3");
+        phone.installAnApp("RunApp","11.1.23","runApp.com");
     }
 }

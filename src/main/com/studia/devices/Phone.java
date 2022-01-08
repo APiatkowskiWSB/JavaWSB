@@ -65,25 +65,25 @@ public class Phone extends Device implements Saleable {
                 '}';
     }
 
-    void installAnApp(String nazwaAplikacji) {
+    public void installAnApp(String nazwaAplikacji) {
         installAnApp(nazwaAplikacji, DEFAULT_VERSION);
     }
 
-    void installAnApp(String nazwaAplikacji, String wersjaAplikacji) {
+    public void installAnApp(String nazwaAplikacji, String wersjaAplikacji) {
         installAnApp(nazwaAplikacji,wersjaAplikacji,DEFAULT_SERVER_ADDRESS);
     }
 
-    void installAnApp(String nazwaAplikacji, String wersjaAplikacji, String adresServera) {
+    public void installAnApp(String nazwaAplikacji, String wersjaAplikacji, String adresServera) {
         System.out.println("zainstalowano na telefonie aplikacje " + nazwaAplikacji + " w wersji " +wersjaAplikacji +
                 " na serverze " + adresServera);
     }
 
-    void installAnApp(List<String> applicationsToInstall) {
+    public void installAnApp(List<String> applicationsToInstall) {
         for (String application: applicationsToInstall) {
             installAnApp(application);
         }
     }
-    void installAnApp(URL url) {
-        installAnApp(DEFAULT_APPLICATION);
+    public void installAnApp(URL url) {
+        System.out.println(url.toString());
     }
 }

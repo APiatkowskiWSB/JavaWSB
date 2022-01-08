@@ -1,6 +1,8 @@
 package main.com.studia.creatures;
 
 import main.com.studia.devices.Saleable;
+
+import java.net.URL;
 import java.util.Objects;
 
 public abstract class Animal implements Saleable ,Feedable {
@@ -26,6 +28,18 @@ public abstract class Animal implements Saleable ,Feedable {
         }
     }
 
+    public void takeForAWalk() {
+        if (weight <= 0) {
+            System.out.println("Nie zyje wiec nie ide na spacer");
+            return;
+        }
+        weight--;
+        if (weight >0) {
+            System.out.println("Po spacerze moja waga to " + weight);
+        } else {
+            System.out.println("Za duzo spacerowalem i zmarlem.");
+        }
+    }
 
 
     public void setWeight(Double weight) {
@@ -33,6 +47,10 @@ public abstract class Animal implements Saleable ,Feedable {
     }
 
     public void feed() {
+        if (weight <= 0) {
+            System.out.println("Nie zyje wiec nie bede jadl");
+            return;
+        }
         weight++;
         System.out.println("Moja waga to: " + weight);
     }

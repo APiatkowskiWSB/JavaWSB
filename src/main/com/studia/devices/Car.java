@@ -2,7 +2,7 @@ package main.com.studia.devices;
 
 import main.com.studia.creatures.Human;
 
-public class Car extends Device implements Saleable {
+public abstract class Car extends Device implements Saleable {
     Double weight;
     Integer doors;
     Double value;
@@ -35,6 +35,8 @@ public class Car extends Device implements Saleable {
                 doors == car.doors &&
                 car.value == car.value;
     }
+
+    public abstract void refuel();
 
     @Override
     public String toString() {
