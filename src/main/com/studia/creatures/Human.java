@@ -1,10 +1,8 @@
 package main.com.studia.creatures;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import main.com.studia.devices.Car;
 import main.com.studia.devices.Phone;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +26,7 @@ public class Human extends Animal {
     }
 
     public void getSalary() {
-        if(getSalaryHistory.size() == 0) {
+        if (getSalaryHistory.size() == 0) {
             System.out.println("Dane o wypłacie nidy nie były pobierane");
         } else {
             getSalaryHistory.entrySet().stream()
@@ -39,9 +37,9 @@ public class Human extends Animal {
     }
 
     public void setSalary(Double salary) {
-        if(salary < 0) {
+        if (salary < 0) {
             System.out.println("Salary nie moze byc mniejsze niz 0");
-        }else {
+        } else {
             System.out.println("Dane zostaly wyslane do systemu ksiegowego");
             System.out.println("Koniecznie odbierz aneks do umowy u pani Hani z kadr");
             System.out.println("ZUS i US juz wiedza o zmianie wyplaty i nie ma sensu ukrywac dochodu");
@@ -57,14 +55,14 @@ public class Human extends Animal {
         this.car = car;
     }
 
-    public void checkIfHumanCanBuyCar(Car car){
-        if (salary > car.getValue()){
+    public void checkIfHumanCanBuyCar(Car car) {
+        if (salary > car.getValue()) {
             System.out.println("Udalo sie kupic samochod za gotowke");
             this.car = car;
-        }else if(salary/12> car.getValue()) {
+        } else if (salary / 12 > car.getValue()) {
             System.out.println("Udalo sie kupic samochod na kredyt");
             this.car = car;
-        }else {
+        } else {
             System.out.println("zapisz sie na studia i znajdz nowa robote albo idz po podwyzke");
         }
     }

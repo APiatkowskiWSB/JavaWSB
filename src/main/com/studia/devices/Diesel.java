@@ -1,8 +1,6 @@
 package main.com.studia.devices;
 
-import java.sql.SQLOutput;
-
-public class Diesel extends Car{
+public class Diesel extends Car {
 
     public Diesel(String model, String producer, Integer yearOfProduction) {
         super(model, producer, yearOfProduction);

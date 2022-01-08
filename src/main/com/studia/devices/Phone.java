@@ -25,9 +25,9 @@ public class Phone extends Device implements Saleable {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
-        if(this.equals(seller.phone)) {
+        if (this.equals(seller.phone)) {
             System.out.println("Sprzedajacy posiada ten telefon do sprzedania");
-            if(buyer.cash >= price) {
+            if (buyer.cash >= price) {
                 System.out.println("Kupujacy ma wystarczajaco gotówki");
                 buyer.cash -= price;
                 seller.cash += price;
@@ -36,10 +36,10 @@ public class Phone extends Device implements Saleable {
                 buyer.phone = this;
                 System.out.println(buyer.firstName + " kupil telefon " + this.producer + " " + this.model + " za cene " + price);
                 System.out.println("Transakcja zakonczona");
-            }else{
+            } else {
                 System.out.println("Kupujacy nie ma wystarczaco gotówki, transakcja niemożliwa");
             }
-        }else {
+        } else {
             System.out.println("Sprzedajacy nie posiada tego telefonu");
         }
     }
@@ -70,19 +70,20 @@ public class Phone extends Device implements Saleable {
     }
 
     public void installAnApp(String nazwaAplikacji, String wersjaAplikacji) {
-        installAnApp(nazwaAplikacji,wersjaAplikacji,DEFAULT_SERVER_ADDRESS);
+        installAnApp(nazwaAplikacji, wersjaAplikacji, DEFAULT_SERVER_ADDRESS);
     }
 
     public void installAnApp(String nazwaAplikacji, String wersjaAplikacji, String adresServera) {
-        System.out.println("zainstalowano na telefonie aplikacje " + nazwaAplikacji + " w wersji " +wersjaAplikacji +
+        System.out.println("zainstalowano na telefonie aplikacje " + nazwaAplikacji + " w wersji " + wersjaAplikacji +
                 " na serverze " + adresServera);
     }
 
     public void installAnApp(List<String> applicationsToInstall) {
-        for (String application: applicationsToInstall) {
+        for (String application : applicationsToInstall) {
             installAnApp(application);
         }
     }
+
     public void installAnApp(URL url) {
         System.out.println("twoj url to: " + url);
         System.out.println("Zainstalowana aplikacja to " + DEFAULT_APPLICATION + " w wersji " + DEFAULT_VERSION);

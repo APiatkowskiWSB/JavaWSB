@@ -22,8 +22,9 @@ public abstract class Car extends Device implements Saleable {
                 weight * doors * value;
         return (int) result;
     }
+
     public boolean equals(Object o) {
-        if(this == o) {
+        if (this == o) {
             return true;
         }
         if (o == null || o instanceof Car) {
@@ -50,15 +51,15 @@ public abstract class Car extends Device implements Saleable {
                 '}';
     }
 
-    public void turnOn(){
+    public void turnOn() {
         System.out.println("Przekrecam kluczyk");
     }
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
-        if(this.equals(seller.getCar())) {
+        if (this.equals(seller.getCar())) {
             System.out.println("Sprzedajacy posiada ten samochod do sprzedania");
-            if(buyer.cash >= price) {
+            if (buyer.cash >= price) {
                 System.out.println("Kupujacy ma wystarczajaco gotówki");
                 buyer.cash -= price;
                 seller.cash += price;
@@ -67,10 +68,10 @@ public abstract class Car extends Device implements Saleable {
                 buyer.setCar(this);
                 System.out.println(buyer.firstName + " kupil samochod " + this.producer + " " + this.model);
                 System.out.println("Transakcja zakonczona");
-            }else{
+            } else {
                 System.out.println("Kupujacy nie ma wystarczaco gotówki, transakcja niemożliwa");
             }
-        }else {
+        } else {
             System.out.println("Sprzedajacy nie posiada tego samochodu");
         }
     }

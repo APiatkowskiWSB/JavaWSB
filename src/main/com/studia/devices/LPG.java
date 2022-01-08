@@ -1,7 +1,6 @@
 package main.com.studia.devices;
 
-public class LPG extends Car{
-
+public class LPG extends Car {
 
 
     public LPG(String model, String producer, Integer yearOfProduction) {

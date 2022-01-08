@@ -2,10 +2,9 @@ package main.com.studia.creatures;
 
 import main.com.studia.devices.Saleable;
 
-import java.net.URL;
 import java.util.Objects;
 
-public abstract class Animal implements Saleable ,Feedable {
+public abstract class Animal implements Saleable, Feedable {
     private static final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
     private static final Double DEFAULT_DOG_WEIGHT = 12.0;
     private static final Double DEFAULT_CAT_WEIGHT = 2.3;
@@ -34,7 +33,7 @@ public abstract class Animal implements Saleable ,Feedable {
             return;
         }
         weight--;
-        if (weight >0) {
+        if (weight > 0) {
             System.out.println("Po spacerze moja waga to " + weight);
         } else {
             System.out.println("Za duzo spacerowalem i zmarlem.");
@@ -80,9 +79,9 @@ public abstract class Animal implements Saleable ,Feedable {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
-        if(this.equals(seller.animal)) {
+        if (this.equals(seller.animal)) {
             System.out.println("Sprzedajacy posiada to zwierze do sprzedania");
-            if(buyer.cash >= price) {
+            if (buyer.cash >= price) {
                 System.out.println("Kupujacy ma wystarczajaco gotówki");
                 buyer.cash -= price;
                 seller.cash += price;
@@ -91,10 +90,10 @@ public abstract class Animal implements Saleable ,Feedable {
                 buyer.animal = this;
                 System.out.println(buyer.firstName + " kupil " + this.species + "za cene " + price);
                 System.out.println("Transakcja zakonczona");
-            }else{
+            } else {
                 System.out.println("Kupujacy nie ma wystarczaco gotówki, transakcja niemożliwa");
             }
-        }else {
+        } else {
             System.out.println("Sprzedajacy nie posiada tego zwierzecia");
         }
     }
