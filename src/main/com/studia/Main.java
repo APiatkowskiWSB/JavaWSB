@@ -5,10 +5,7 @@ import main.com.studia.creatures.Animal;
 import main.com.studia.creatures.FarmAnimal;
 import main.com.studia.creatures.Human;
 import main.com.studia.creatures.Pet;
-import main.com.studia.devices.Car;
-import main.com.studia.devices.Diesel;
-import main.com.studia.devices.Electric;
-import main.com.studia.devices.Phone;
+import main.com.studia.devices.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -80,5 +77,14 @@ public class Main {
         dieselCar.refuel();
         Car electric = new Electric("Micra", "Nissan", 2015);
         electric.refuel();
+        electric.value = 2000.0;
+
+        Human carsOwner = new Human("Kazik", 5);
+        Car passat = new LPG("Vw","Passat", 1998);
+        passat.value = 12000.0;
+        carsOwner.addCarToGarage(dieselCar);
+        carsOwner.addCarToGarage(electric);
+        carsOwner.setCar(passat,4);
+        carsOwner.getCarsValue();
     }
 }

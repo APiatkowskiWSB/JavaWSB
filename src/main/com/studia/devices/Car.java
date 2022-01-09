@@ -2,14 +2,20 @@ package main.com.studia.devices;
 
 import main.com.studia.creatures.Human;
 
+import java.util.LinkedList;
+import java.util.List;
+
+
 public abstract class Car extends Device implements Saleable {
     Double weight;
     Integer doors;
     public Double value;
     String typeOfEngine;
+    public List<Human> owners;
 
     public Car(String model, String producer, Integer yearOfProduction) {
         super(yearOfProduction, producer, model);
+        this.owners = new LinkedList<>();
     }
 
     public Double getValue() {
@@ -57,15 +63,22 @@ public abstract class Car extends Device implements Saleable {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
-        if (this.equals(seller.getCar())) {
+        if (seller.hasCar(this)) {
             System.out.println("Sprzedajacy posiada ten samochod do sprzedania");
-            if (buyer.cash >= price) {
+            if (!buyer.hasFreeParkingSlot()){
+                System.out.println("kupujacy nie ma miejsca na parkingu zeby kupic auto");
+            }
+            else if(!this.isLastOwner(seller)){
+                System.out.println("Sprzedajacy nie jest ostatnim wlascicielem auta");
+            }
+            else if (buyer.cash >= price) {
                 System.out.println("Kupujacy ma wystarczajaco gotówki");
                 buyer.cash -= price;
                 seller.cash += price;
-                seller.setCar(null);
+                seller.removeCar(this);
                 System.out.println(seller.firstName + " sprzedal samochod " + this.producer + " " + this.model);
-                buyer.setCar(this);
+                buyer.addCarToGarage(this);
+                owners.add(buyer);
                 System.out.println(buyer.firstName + " kupil samochod " + this.producer + " " + this.model);
                 System.out.println("Transakcja zakonczona");
             } else {
@@ -76,13 +89,7 @@ public abstract class Car extends Device implements Saleable {
         }
     }
 
-    @Override
-    public void sale() {
-
-    }
-
-    @Override
-    public void getPrice() {
-
+    private boolean isLastOwner(Human seller) {
+        return owners.get(owners.size() -1).equals(seller);
     }
 }
