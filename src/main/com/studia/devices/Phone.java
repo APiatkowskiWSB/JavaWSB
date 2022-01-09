@@ -45,16 +45,6 @@ public class Phone extends Device implements Saleable {
     }
 
     @Override
-    public void sale() {
-
-    }
-
-    @Override
-    public void getPrice() {
-
-    }
-
-    @Override
     public String toString() {
         return "Phone{" +
                 "yearOfPRoduction=" + yearOfPRoduction +

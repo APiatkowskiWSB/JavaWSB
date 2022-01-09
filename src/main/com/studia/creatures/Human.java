@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Human extends Animal{
+public class Human extends Animal implements Comparable<Human>{
 
     public final static String HUMAN_SPECIES = "homo sapiens";
     public final static int DEFAULT_GARAGE_SIZE = 5;
@@ -138,5 +138,10 @@ public class Human extends Animal{
                 return;
             }
         }
+    }
+
+    @Override
+    public int compareTo(Human otherHuman) {
+        return this.cash.compareTo(otherHuman.cash);
     }
 }

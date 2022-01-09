@@ -68,16 +68,6 @@ public abstract class Animal implements Saleable, Feedable {
     }
 
     @Override
-    public void sale() {
-        System.out.println("Sprzedaj");
-    }
-
-    @Override
-    public void getPrice() {
-
-    }
-
-    @Override
     public void sell(Human seller, Human buyer, Double price) {
         if (this.equals(seller.animal)) {
             System.out.println("Sprzedajacy posiada to zwierze do sprzedania");

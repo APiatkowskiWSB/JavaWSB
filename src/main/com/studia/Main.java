@@ -1,15 +1,14 @@
 package main.com.studia;
 
 
-import main.com.studia.creatures.Animal;
-import main.com.studia.creatures.FarmAnimal;
-import main.com.studia.creatures.Human;
-import main.com.studia.creatures.Pet;
+import main.com.studia.creatures.*;
 import main.com.studia.devices.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
@@ -28,7 +27,7 @@ public class Main {
         System.out.println();
 
         Human human = new Human("Jan Kowalski");
-        Car dieselCar = new Diesel("A4", "Audi", 2018);
+        Car dieselCar = new Diesel("A4", "Audi", 2018, human);
         dieselCar.value = 2000.0;
         human.checkIfHumanCanBuyCar(dieselCar);
         human.setSalary(5000.0);
@@ -75,16 +74,31 @@ public class Main {
         chicken.beEaten();
 
         dieselCar.refuel();
-        Car electric = new Electric("Micra", "Nissan", 2015);
+        Car electric = new Electric("Micra", "Nissan", 2015, human);
         electric.refuel();
         electric.value = 2000.0;
 
         Human carsOwner = new Human("Kazik", 5);
-        Car passat = new LPG("Vw","Passat", 1998);
+        Car passat = new LPG("Vw","Passat", 1998, carsOwner);
         passat.value = 12000.0;
         carsOwner.addCarToGarage(dieselCar);
         carsOwner.addCarToGarage(electric);
         carsOwner.setCar(passat,4);
         carsOwner.getCarsValue();
+
+        human.cash = 1000.0;
+        seller.cash = 2000.0;
+        buyer.cash = 3000.0;
+        carsOwner.cash = 1500.0;
+        List<Human> humansToSort = new LinkedList<>();
+        humansToSort.add(human);
+        humansToSort.add(seller);
+        humansToSort.add(buyer);
+        humansToSort.add(carsOwner);
+        Collections.sort(humansToSort, new HumanCashComparator());
+        for (Human humanToPrint: humansToSort){
+            System.out.println(humanToPrint.firstName + " ma pieniedzy " + humanToPrint.cash);
+        }
+
     }
 }

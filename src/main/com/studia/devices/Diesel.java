@@ -1,9 +1,11 @@
 package main.com.studia.devices;
 
+import main.com.studia.creatures.Human;
+
 public class Diesel extends Car {
 
-    public Diesel(String model, String producer, Integer yearOfProduction) {
-        super(model, producer, yearOfProduction);
+    public Diesel(String model, String producer, Integer yearOfProduction, Human firstOwner) {
+        super(model, producer, yearOfProduction, firstOwner);
         this.typeOfEngine = "DIESEL";
     }
 

@@ -13,9 +13,11 @@ public abstract class Car extends Device implements Saleable {
     String typeOfEngine;
     public List<Human> owners;
 
-    public Car(String model, String producer, Integer yearOfProduction) {
+    public Car(String model, String producer, Integer yearOfProduction, Human firstOwner) {
         super(yearOfProduction, producer, model);
         this.owners = new LinkedList<>();
+        this.owners.add(firstOwner);
+        firstOwner.addCarToGarage(this);
     }
 
     public Double getValue() {
@@ -91,5 +93,17 @@ public abstract class Car extends Device implements Saleable {
 
     private boolean isLastOwner(Human seller) {
         return owners.get(owners.size() -1).equals(seller);
+    }
+
+    public boolean wasAnOwner(Human human) {
+        return this.owners.contains(human);
+    }
+
+    public boolean doesASoldToB(Human a, Human b) {
+        if(!wasAnOwner(a) || !wasAnOwner(b)) {
+            return false;
+        } else {
+            return this.owners.indexOf(b) - this.owners.indexOf(a) == 1;
+        }
     }
 }
