@@ -75,7 +75,7 @@ public class Phone extends Device implements Saleable {
 
     public void installAnApp(String nazwaAplikacji, String wersjaAplikacji, String adresServera) {
         System.out.println("zainstalowano na telefonie aplikacje " + nazwaAplikacji + " w wersji " + wersjaAplikacji +
-                " na serverze " + adresServera);
+                " z servera " + adresServera);
     }
 
     public void installAnApp(List<String> applicationsToInstall) {

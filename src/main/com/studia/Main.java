@@ -12,6 +12,8 @@ import main.com.studia.devices.Phone;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -56,6 +58,12 @@ public class Main {
         iphone.installAnApp("RunApp");
         iphone.installAnApp("RunApp","12.3");
         iphone.installAnApp("RunApp","11.1.23","runApp.com");
+
+        List<String> applications = new ArrayList<>();
+        applications.add("Facebook");
+        applications.add("Twitter");
+        applications.add("Instagram");
+        iphone.installAnApp(applications);
 
         Human buyer = new Human("buyer");
         Human seller = new Human("seller");
