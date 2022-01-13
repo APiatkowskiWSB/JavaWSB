@@ -4,8 +4,10 @@ import main.com.studia.devices.Car;
 import main.com.studia.devices.Phone;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Human extends Animal implements Comparable<Human>{
 
@@ -104,7 +106,7 @@ public class Human extends Animal implements Comparable<Human>{
                 return true;
             }
         }
-        System.out.println("nie ma miejsca w garazu");
+        System.out.println("nie kupiles samochodu bo nie ma miejsca w garazu");
         return false;
     }
 
@@ -144,4 +146,26 @@ public class Human extends Animal implements Comparable<Human>{
     public int compareTo(Human otherHuman) {
         return this.cash.compareTo(otherHuman.cash);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Human human = (Human) o;
+        return Double.compare(human.salary, salary) == 0 &&
+                Objects.equals(firstName, human.firstName) &&
+                Objects.equals(animal, human.animal) &&
+                Objects.equals(cash, human.cash) &&
+                Objects.equals(phone, human.phone) &&
+                Objects.equals(getSalaryHistory, human.getSalaryHistory);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(super.hashCode(), firstName, lastName, animal, salary, cash, phone, getSalaryHistory);
+        result = 31 * result + Arrays.hashCode(garage);
+        return result;
+    }
+
 }

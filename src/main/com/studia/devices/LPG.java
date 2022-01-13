@@ -5,8 +5,8 @@ import main.com.studia.creatures.Human;
 public class LPG extends Car {
 
 
-    public LPG(String model, String producer, Integer yearOfProduction, Human firstOwner) {
-        super(model, producer, yearOfProduction, firstOwner);
+    public LPG(String model, String producer, Integer yearOfProduction, Human firstOwner, Double firstSaleValue) {
+        super(model, producer, yearOfProduction, firstOwner, firstSaleValue);
         this.typeOfEngine = "LPG";
     }
 

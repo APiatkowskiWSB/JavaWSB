@@ -27,7 +27,7 @@ public class Main {
         System.out.println();
 
         Human human = new Human("Jan Kowalski");
-        Car dieselCar = new Diesel("A4", "Audi", 2018, human);
+        Car dieselCar = new Diesel("A4", "Audi", 2018, human, 0.0);
         dieselCar.value = 2000.0;
         human.checkIfHumanCanBuyCar(dieselCar);
         human.setSalary(5000.0);
@@ -74,12 +74,12 @@ public class Main {
         chicken.beEaten();
 
         dieselCar.refuel();
-        Car electric = new Electric("Micra", "Nissan", 2015, human);
+        Car electric = new Electric("Micra", "Nissan", 2015, human, 1000.0);
         electric.refuel();
         electric.value = 2000.0;
 
         Human carsOwner = new Human("Kazik", 5);
-        Car passat = new LPG("Vw","Passat", 1998, carsOwner);
+        Car passat = new LPG("Vw","Passat", 1998, carsOwner, 1000.0);
         passat.value = 12000.0;
         carsOwner.addCarToGarage(dieselCar);
         carsOwner.addCarToGarage(electric);
@@ -99,6 +99,22 @@ public class Main {
         for (Human humanToPrint: humansToSort){
             System.out.println(humanToPrint.firstName + " ma pieniedzy " + humanToPrint.cash);
         }
+        System.out.println();
+        System.out.println("Testowanie zadania 12");
+        System.out.println();
+        Car audiA4 = new Diesel("A4", "Audi", 2021, seller, 2000.0);
+        audiA4.sell(human, buyer, 1000.0);
+        audiA4.sell(seller, buyer, 1000.0);
+        audiA4.sell(buyer, human, 500.0);
+        audiA4.doesASoldCarToB(seller, buyer);
+        audiA4.doesASoldCarToB(buyer, seller);
+        audiA4.wasAnOwner(seller);
+        System.out.println("Z udzialem audiA4 było " + audiA4.getNumberOfTransactionForCar(audiA4) + "transakcji");
+        System.out.println("Transakcje dla tego samochodu to :");
+        for (CarTransaction carTransaction: audiA4.transactions) {
+            System.out.println(carTransaction.toString());
+        }
+
 
     }
 }

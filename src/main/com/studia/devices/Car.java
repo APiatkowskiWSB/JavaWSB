@@ -2,6 +2,8 @@ package main.com.studia.devices;
 
 import main.com.studia.creatures.Human;
 
+import java.sql.SQLOutput;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,12 +13,15 @@ public abstract class Car extends Device implements Saleable {
     Integer doors;
     public Double value;
     String typeOfEngine;
-    public List<Human> owners;
+    public List<CarTransaction> transactions;
+    private Human authorisedSeller;
 
-    public Car(String model, String producer, Integer yearOfProduction, Human firstOwner) {
+    public Car(String model, String producer, Integer yearOfProduction, Human firstOwner, Double firstSaleValue) {
         super(yearOfProduction, producer, model);
-        this.owners = new LinkedList<>();
-        this.owners.add(firstOwner);
+        this.authorisedSeller = new Human("Sprzedawca z salonu");
+        this.transactions = new LinkedList<>();
+        value = firstSaleValue;
+        this.transactions.add(new CarTransaction(firstOwner, authorisedSeller, firstSaleValue));
         firstOwner.addCarToGarage(this);
     }
 
@@ -27,7 +32,9 @@ public abstract class Car extends Device implements Saleable {
     public int hashCode() {
         double result = 31 * 7 * model.hashCode() *
                 producer.hashCode() *
-                weight * doors * value;
+                yearOfPRoduction *
+                typeOfEngine.hashCode() *
+                value;
         return (int) result;
     }
 
@@ -80,7 +87,7 @@ public abstract class Car extends Device implements Saleable {
                 seller.removeCar(this);
                 System.out.println(seller.firstName + " sprzedal samochod " + this.producer + " " + this.model);
                 buyer.addCarToGarage(this);
-                owners.add(buyer);
+                this.transactions.add(new CarTransaction(buyer, seller, price));
                 System.out.println(buyer.firstName + " kupil samochod " + this.producer + " " + this.model);
                 System.out.println("Transakcja zakonczona");
             } else {
@@ -92,18 +99,32 @@ public abstract class Car extends Device implements Saleable {
     }
 
     private boolean isLastOwner(Human seller) {
-        return owners.get(owners.size() -1).equals(seller);
+        return transactions.get(transactions.size() -1).getBuyer().equals(seller);
     }
 
     public boolean wasAnOwner(Human human) {
-        return this.owners.contains(human);
+        return this.transactions.stream()
+                .map(transaction -> transaction.getBuyer())
+                .filter(carOwner -> carOwner.equals(human))
+                .count() > 0;
     }
 
-    public boolean doesASoldToB(Human a, Human b) {
+    public void doesASoldCarToB(Human a, Human b) {
         if(!wasAnOwner(a) || !wasAnOwner(b)) {
-            return false;
+            System.out.println("Nie bylo transakcji pomiedzy sprzedajacym " + a.firstName + " a kupujacym " + b.firstName);
         } else {
-            return this.owners.indexOf(b) - this.owners.indexOf(a) == 1;
+            long numberOfTransactionBeetwenThem =  this.transactions.stream()
+                    .filter(transaction -> transaction.getSeller().equals(a) && transaction.getBuyer().equals(b))
+                    .count();
+            if(numberOfTransactionBeetwenThem > 0) {
+                System.out.println("Tak sprzedajacy " + a.firstName + " sprzedal samochod dla " + b.firstName);
+            } else {
+                System.out.println("Nie bylo transakcji pomiedzy sprzedajacym " + a.firstName + " a kupujacym " + b.firstName);
+            }
         }
+    }
+
+    public int getNumberOfTransactionForCar(Car car) {
+        return this.transactions.size();
     }
 }
