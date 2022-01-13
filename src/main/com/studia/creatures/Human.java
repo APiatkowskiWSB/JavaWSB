@@ -19,7 +19,7 @@ public class Human extends Animal implements Comparable<Human>{
     public Car[] garage;
     double salary;
     public Double cash;
-    public Phone phone;
+    private Phone phone;
     private Map<LocalDateTime, Double> getSalaryHistory = new HashMap<>();
 
     public Human(String firstName) {
@@ -59,6 +59,15 @@ public class Human extends Animal implements Comparable<Human>{
 
     public Car getCar(int index) {
         return garage[index];
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+        phone.phoneOwner = this;
     }
 
     public void setCar(Car car, int index) {
@@ -167,5 +176,4 @@ public class Human extends Animal implements Comparable<Human>{
         result = 31 * result + Arrays.hashCode(garage);
         return result;
     }
-
 }

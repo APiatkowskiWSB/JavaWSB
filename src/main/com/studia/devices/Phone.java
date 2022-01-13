@@ -3,7 +3,8 @@ package main.com.studia.devices;
 import main.com.studia.creatures.Human;
 
 import java.net.URL;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Phone extends Device implements Saleable {
     final Double screenSize;
@@ -12,10 +13,13 @@ public class Phone extends Device implements Saleable {
     public final static String DEFAULT_PROTOCOL = "HTTP";
     public final static String DEFAULT_VERSION = "10.2.13";
     public final static String DEFAULT_APPLICATION = "INTELLIJ";
+    public Human phoneOwner;
+    public List<Application> phoneApplications;
 
     public Phone(String producer, String model, Double screenSize, Integer yearOfProduction) {
         super(yearOfProduction, producer, model);
         this.screenSize = screenSize;
+        phoneApplications = new ArrayList<>();
     }
 
     @Override
@@ -25,15 +29,15 @@ public class Phone extends Device implements Saleable {
 
     @Override
     public void sell(Human seller, Human buyer, Double price) {
-        if (this.equals(seller.phone)) {
+        if (this.equals(seller.getPhone())) {
             System.out.println("Sprzedajacy posiada ten telefon do sprzedania");
             if (buyer.cash >= price) {
                 System.out.println("Kupujacy ma wystarczajaco gotówki");
                 buyer.cash -= price;
                 seller.cash += price;
-                seller.phone = null;
+                seller.setPhone(null);
                 System.out.println(seller.firstName + " sprzedal telefon " + this.producer + " " + this.model + " za cene " + price);
-                buyer.phone = this;
+                buyer.setPhone(this);
                 System.out.println(buyer.firstName + " kupil telefon " + this.producer + " " + this.model + " za cene " + price);
                 System.out.println("Transakcja zakonczona");
             } else {
@@ -77,5 +81,70 @@ public class Phone extends Device implements Saleable {
     public void installAnApp(URL url) {
         System.out.println("twoj url to: " + url);
         System.out.println("Zainstalowana aplikacja to " + DEFAULT_APPLICATION + " w wersji " + DEFAULT_VERSION);
+    }
+
+    public void installAnAppOnPhone(Application application) {
+        if (this.phoneOwner.cash < application.price) {
+            System.out.println("Wlasciciel ma za malo pieniedzy na aplikacje " + application.applicationName);
+        } else {
+            this.phoneOwner.cash -= application.price;
+            System.out.println("Aplikacja zostala zainstalowana :" + application.applicationName);
+            phoneApplications.add(application);
+        }
+    }
+
+    public void isApplicationInstalledOnPhone(Application application) {
+        if (phoneApplications.contains(application)){
+            System.out.println("Applikacja " + application.applicationName +" jest zainstalowana na telefonie");
+        } else {
+            System.out.println("Applikacja " + application.applicationName +" nie jest zainstalowana na telefonie");
+        }
+    }
+
+    public void isApplicationInstalledOnPhone(String appName) {
+        if (phoneApplications.stream()
+                .filter(application -> application.applicationName.equals(appName))
+                .count() > 0){
+            System.out.println("Applikacja " + appName +" jest zainstalowana na telefonie");
+        } else {
+            System.out.println("Applikacja " + appName +" nie jest zainstalowana na telefonie");
+        }
+    }
+
+    public void getAllFreeApplicationOnPhone() {
+        List<Application> freeApplications = phoneApplications.stream()
+                .filter(application -> application.price == 0)
+                .collect(Collectors.toList());
+        if (freeApplications.size() == 0) {
+            System.out.println("Na telefonie nie ma darmowych aplikacji");
+        } else {
+            System.out.println("Darmowe aplikacje to :");
+            System.out.println(freeApplications.stream().map(application -> application.applicationName)
+                                                        .collect(Collectors.joining(", ")));
+        }
+    }
+
+    public void getApplicationsValue() {
+        double applicationsValue = 0;
+        for (Application application: phoneApplications) {
+            applicationsValue += application.price;
+        }
+        System.out.println("Wszystkie aplikacje sa warte " + applicationsValue);
+    }
+
+    public void getAllApplicationNamesInAlphabeticOrder() {
+        System.out.println("Aplikacje w kolejnosci alfabetycznej to:");
+        Collections.sort(phoneApplications, new ApplicationNameComparator());
+        for (Application application: phoneApplications) {
+            System.out.println(application.applicationName);
+        }
+    }
+
+    public void getAllAppInOrderFromCheapeastToExpensive() {
+        System.out.println("Aplikacje w kolejnosci od najtanszej to:");
+        Collections.sort(phoneApplications, new ApplicationValueComparator());
+        for (Application application: phoneApplications) {
+            System.out.println(application.applicationName + " wartosc: " + application.price);
+        }
     }
 }

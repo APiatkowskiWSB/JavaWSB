@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -115,6 +116,30 @@ public class Main {
             System.out.println(carTransaction.toString());
         }
 
+        System.out.println();
+        System.out.println("Testowanie zadania 13");
+        System.out.println();
+        Application runApp = new Application("RunApp", 0, "1.5.0");
+        Application youtube = new Application("Youtube", 300, "1.5.0");
+        Application strava = new Application("Strava", 1000, "1.5.0");
+        Application twitter = new Application("Twitter", 300, "1.5.0");
+        Application facebook = new Application("Facebook", 200, "1.5.0");
+        buyer.setPhone(iphone);
+        iphone.installAnAppOnPhone(runApp);
+        iphone.installAnAppOnPhone(youtube);
+        iphone.installAnAppOnPhone(twitter);
+        iphone.installAnAppOnPhone(facebook);
+        iphone.installAnAppOnPhone(strava);
+
+        iphone.isApplicationInstalledOnPhone(runApp);
+        iphone.isApplicationInstalledOnPhone(facebook);
+        iphone.isApplicationInstalledOnPhone("RunApp");
+        iphone.isApplicationInstalledOnPhone("Niezainstalowana aplikacja");
+
+        iphone.getAllFreeApplicationOnPhone();
+        iphone.getAllApplicationNamesInAlphabeticOrder();
+        iphone.getApplicationsValue();
+        iphone.getAllAppInOrderFromCheapeastToExpensive();
 
     }
 }
